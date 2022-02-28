@@ -10,9 +10,16 @@ html(lang="en")
     header 
       h1 Zoom 
     main
-      div#myStream
-        video#my-video(autoplay, playsinline, widtrh="400", height="400")
-        button#mute Mute
-        button#camera-off Camera-Off
+      div#welcome
+        form
+          input(placeholder="room name")
+          button Enter room
+      div#call
+        div#myStream
+          video#my-video(autoplay, playsinline, widtrh="400", height="400")
+          button#mute Mute
+          button#camera-off Camera-Off
+          select#cameras
+          video#peer-video(autoplay, playsinline, widtrh="400", height="400")
     script(src="/socket.io/socket.io.js") 
     script(src="/public/js/app.js")

@@ -148,6 +148,8 @@ function makeConection() {
 
 function onIceCandidate(event) {
   socket.emit('ice', event.candidate, roomName);
+  //sadfsasdfas
+  // add add add add
 }
 function onTrack(event) {
   const peerVideo = document.getElementById('peer-video');

@@ -42,6 +42,13 @@ async function onSubmitWelcomeForm(event) {
 async function onChangeCamera() {
   try {
     await getMedia(camerasSelect.value);
+    if (peerConnection) {
+      const videoTrack = myStream.getVideoTracks()[0];
+      const videoSender = peerConnection
+        .getSenders()
+        .find((sender) => sender.track.kind === 'video');
+      videoSender.replaceTrack(videoTrack);
+    }
   } catch (e) {
     console.log(e);
   }
@@ -109,7 +116,9 @@ async function getMedia(deviceId) {
     if (!deviceId) {
       await getUserCameras();
     }
-  } catch (e) {}
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 // Socket.io Code
@@ -148,9 +157,8 @@ function makeConection() {
 
 function onIceCandidate(event) {
   socket.emit('ice', event.candidate, roomName);
-  //sadfsasdfas
-  // add add add add
 }
+
 function onTrack(event) {
   const peerVideo = document.getElementById('peer-video');
   peerVideo.srcObject = event.streams[0];

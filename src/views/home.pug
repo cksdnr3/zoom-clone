@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://unpkg.com/mvp.css")
+    title Document
+  body 
+    header 
+      h1 무야호 
+    main
+      div#welcome
+        form
+          input(placeholder="room name")
+          button Enter room
+      div#call
+        div#myStream
+          video#my-video(autoplay, playsinline, widtrh="400", height="400")
+          button#mute Mute
+          button#camera-off Camera-Off
+          select#cameras
+          video#peer-video(autoplay, playsinline, widtrh="400", height="400")
+    script(src="/socket.io/socket.io.js") 
+    script(src="/public/js/app.js")
